@@ -9,6 +9,7 @@ public class Crianca {
     private String cpf;
     private String nomeDoPai;
     private String nomeDaMae;
+    private Historico historico;
 
     public Crianca(String nome, int idade, String dataNascimento, String genero, String rg, String cpf,String nomeDaMae, String nomeDoPai){
         this.nome = nome;
@@ -19,6 +20,11 @@ public class Crianca {
         this.cpf = cpf;
         this.nomeDaMae = nomeDaMae;
         this.nomeDoPai = nomeDoPai;
+        this.historico = new Historico();
+    }
+
+    public Historico getHistorico() {
+        return historico;
     }
 
     @Override

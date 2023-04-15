@@ -17,9 +17,20 @@ public class Usuario {
         List<Crianca> criancas = new ArrayList<>();
     }
 
+    public void addCrianca(Crianca crianca){
+        //crianca não pode ser null
+        criancas.add(crianca);
+    }
 
-
-
+    public Crianca getCrianca(String nomeCrianca){
+        //nomeCrianca não pode ser null
+        //Se n achar, retornar null
+        for(Crianca c : criancas){
+            if (c.getNome().equalsIgnoreCase(nomeCrianca))
+                return c;
+        }
+        return null;
+    }
 
 
 }
