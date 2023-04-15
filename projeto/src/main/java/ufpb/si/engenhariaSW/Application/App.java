@@ -1,13 +1,11 @@
 package ufpb.si.engenhariaSW.Application;
 
-/**
- * Hello world!
- *
- */
-public class App 
+import ufpb.si.engenhariaSW.Model.Crianca;
+public class App
 {
     public static void main( String[] args )
     {
-        System.out.println( "Hello World!" );
+        Crianca c1 = new Crianca("Alice", 4, "10/04/2019", "Feminino", "56.238.854-97", "580.264.931-45" , "Laura Paz Silva", "Antônio Carlos Paz Silva");
+        System.out.println(c1.toString());
     }
 }
