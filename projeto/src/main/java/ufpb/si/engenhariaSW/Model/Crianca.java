@@ -1,5 +1,7 @@
 package ufpb.si.engenhariaSW.Model;
 
+import java.util.Objects;
+
 public class Crianca {
     private String nome;
     private int idade;
@@ -102,4 +104,16 @@ public class Crianca {
         this.nomeDaMae = nomeDaMae;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Crianca crianca = (Crianca) o;
+        return Objects.equals(nome, crianca.nome);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(nome);
+    }
 }

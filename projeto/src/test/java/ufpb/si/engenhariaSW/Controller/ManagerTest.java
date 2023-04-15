@@ -2,7 +2,6 @@ package ufpb.si.engenhariaSW.Controller;
 
 import junit.framework.TestCase;
 import ufpb.si.engenhariaSW.Model.Usuario;
-//import org.junit.Test;
 
 public class ManagerTest extends TestCase {
     Manager test = new Manager();
@@ -23,4 +22,6 @@ public class ManagerTest extends TestCase {
         assertNull(testUser2);
         assertEquals(testUser, test.removerUsuario("T3ST"));
     }
+
+
 }

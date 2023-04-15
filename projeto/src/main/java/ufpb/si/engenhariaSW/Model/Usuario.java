@@ -37,4 +37,8 @@ public class Usuario {
     public String getNome() {
         return nome;
     }
+
+    public List<Crianca> getCriancas() {
+        return criancas;
+    }
 }
