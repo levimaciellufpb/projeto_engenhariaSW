@@ -19,7 +19,7 @@ public class Main {
                 int senhaLogin = JOptionPane.showConfirmDialog(null, passwordField, "Digite sua senha:", JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
                 JOptionPane.showMessageDialog(null,"Login feito com sucesso!");
                 Object[] opcoes1 = {"Doenças", "Medicações", "Dentições", "Consultas Médicas", "Alergias", "Outros", "Sair"};
-                int opcaoSelecionada1 = JOptionPane.showOptionDialog(null, "Escolha uma opção", "Panel",
+                int opcaoSelecionadaCadastro = JOptionPane.showOptionDialog(null, "Escolha uma opção", "Panel",
                         JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE, null, opcoes1, opcoes1[0]);
                 break;
             case 1:
