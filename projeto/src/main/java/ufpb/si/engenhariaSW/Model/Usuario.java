@@ -5,13 +5,15 @@ import java.util.List;
 
 public class Usuario {
 
+    private String nome;
     private String email;
     private String senha;
     private List<Crianca> criancas;
 
-    public Usuario(String email, String senha){
+    public Usuario(String email, String senha, String nome){
         //tratamento de erro básico
         //Possivelmente validar email e validar senha
+        this.nome = nome;
         this.email = email;
         this.senha = senha;
         List<Crianca> criancas = new ArrayList<>();
@@ -32,5 +34,7 @@ public class Usuario {
         return null;
     }
 
-
+    public String getNome() {
+        return nome;
+    }
 }
