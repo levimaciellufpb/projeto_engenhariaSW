@@ -90,7 +90,13 @@ public class Manager {
         return null;
     }
 
-    
+    public void alterarHistoricoDaCrianca(Usuario usuario, Crianca crianca, String Alteracao){
+        //Algoritmo: pesquisar se existe usuário e criança, e pegar o histórico da criança
+        //Dependendo de um enum, alterar o campo correto do histórico.
+
+        
+
+    }
 
 
 
