@@ -1,5 +1,6 @@
 package ufpb.si.engenhariaSW.Controller;
 
+import ufpb.si.engenhariaSW.Model.AlterarHistorico;
 import ufpb.si.engenhariaSW.Model.Crianca;
 import ufpb.si.engenhariaSW.Model.Historico;
 import ufpb.si.engenhariaSW.Model.Usuario;
@@ -18,6 +19,7 @@ public class Manager {
     //Possíveis métodos
     //adicionar e remover usuário,adicionar criança, verDadosDaCriança (to string?) ,
     // AlterarDadosDaCriança (deixar em off por enquanto) verHistórico, alterarHistórico
+    // Ideal é trocar todos os retornos null por exceções personalizadas
 
     public void addUsuario(Usuario usuario){
         //usuario não pode ser null
@@ -90,12 +92,55 @@ public class Manager {
         return null;
     }
 
-    public void alterarHistoricoDaCrianca(Usuario usuario, Crianca crianca, String Alteracao){
+    public Historico alterarHistoricoDaCrianca(Usuario usuario, Crianca crianca, String alteracao,
+                                               AlterarHistorico opcao){
+
         //Algoritmo: pesquisar se existe usuário e criança, e pegar o histórico da criança
         //Dependendo de um enum, alterar o campo correto do histórico.
+        //usuario deve existir e criança também, se não retornar null
 
-        
+        if(!usuarioExiste(usuario) && !criancaExiste(usuario, crianca))
+            return null;
 
+        Historico historicoEncontrado = usuario.getCrianca(crianca).getHistorico();
+
+        switch (opcao){
+
+            case DOENCAS:
+                historicoEncontrado.setDoencas(alteracao);
+                return historicoEncontrado;
+
+            case MEDICACOES:
+                historicoEncontrado.setMedicacoes(alteracao);
+                return historicoEncontrado;
+
+            case CONSULTAS:
+                historicoEncontrado.setConsultas(alteracao);
+                return historicoEncontrado;
+
+            case ALERGIAS:
+                historicoEncontrado.setAlergias(alteracao);
+                return historicoEncontrado;
+
+            case DENTICOES:
+                historicoEncontrado.setDenticoes(alteracao);
+                return historicoEncontrado;
+
+            case OUTROS:
+                historicoEncontrado.setOutros(alteracao);
+                return historicoEncontrado;
+
+            default:
+                return null;
+        }
+    }
+
+    private boolean usuarioExiste(Usuario usuario){
+       return usuarios.containsValue(usuario);
+    }
+
+    private boolean criancaExiste(Usuario usuario, Crianca crianca){
+        return usuarioExiste(usuario) && usuario.getCriancas().contains(crianca);
     }
 
 

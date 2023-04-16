@@ -2,6 +2,7 @@ package ufpb.si.engenhariaSW.Model;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class Usuario {
 
@@ -24,11 +25,11 @@ public class Usuario {
         criancas.add(crianca);
     }
 
-    public Crianca getCrianca(String nomeCrianca){
+    public Crianca getCrianca(Crianca crianca){
         //nomeCrianca não pode ser null
         //Se n achar, retornar null
         for(Crianca c : criancas){
-            if (c.getNome().equalsIgnoreCase(nomeCrianca))
+            if (c.equals(crianca))
                 return c;
         }
         return null;
@@ -40,5 +41,26 @@ public class Usuario {
 
     public List<Crianca> getCriancas() {
         return criancas;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Usuario usuario = (Usuario) o;
+        return Objects.equals(nome, usuario.nome);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(nome);
+    }
+
+    @Override
+    public String toString() {
+        return "Usuario{" +
+                "nome='" + nome + '\'' +
+                ", email='" + email + '\'' +
+                '}';
     }
 }

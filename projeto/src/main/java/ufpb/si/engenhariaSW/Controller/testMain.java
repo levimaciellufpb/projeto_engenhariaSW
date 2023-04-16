@@ -16,6 +16,7 @@ public class testMain {
             System.out.println("Isso é um sistema de testes!");
             System.out.println("[0] cadastrar usuario");
             System.out.println("[1] remover usuario");
+            System.out.println("[2] ver todos usuarios");
             System.out.println("[-1] sair");
 
             int option = Integer.parseInt(sc.nextLine());
@@ -44,6 +45,12 @@ public class testMain {
                     }
                     else{
                         System.out.println("Usuario removido = " + rem.getNome());
+                    }
+                    break;
+
+                case 2:
+                    for(Usuario user : manager.getUsuarios().values()){
+                        System.out.println(user.toString());
                     }
                     break;
 
