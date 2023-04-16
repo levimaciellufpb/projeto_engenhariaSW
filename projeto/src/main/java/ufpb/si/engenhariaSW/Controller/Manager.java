@@ -135,6 +135,16 @@ public class Manager {
         }
     }
 
+    public void carregarDados(){
+
+    }
+
+    public void escreverDados(){
+
+    }
+
+
+
     private boolean usuarioExiste(Usuario usuario){
        return usuarios.containsValue(usuario);
     }
@@ -142,6 +152,11 @@ public class Manager {
     private boolean criancaExiste(Usuario usuario, Crianca crianca){
         return usuarioExiste(usuario) && usuario.getCriancas().contains(crianca);
     }
+
+
+
+
+
 
 
 

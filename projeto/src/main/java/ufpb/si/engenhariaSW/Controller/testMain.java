@@ -64,7 +64,6 @@ public class testMain {
             }
         }
 
-
         sc.close();
     }
 }
