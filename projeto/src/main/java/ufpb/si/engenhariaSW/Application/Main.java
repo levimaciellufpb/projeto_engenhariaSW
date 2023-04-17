@@ -8,18 +8,27 @@ public class Main {
 
         JPasswordField passwordField = new JPasswordField();
 
-        Object[] opcoes = {"Login", "Cadastrar", "Sair"};
-        int opcaoSelecionada = JOptionPane.showOptionDialog(null, "Escolha uma opção", "Histórico de Saúde",
-                JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE, null, opcoes, opcoes[0]);
+//        Object[] opcoes = {"Login", "Cadastrar", "Sair"};
+//        int opcaoSelecionada = JOptionPane.showOptionDialog(null, "Escolha uma opção", "Histórico de Saúde",
+//                JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE, null, opcoes, opcoes[0]);
 
-        switch(opcaoSelecionada) {
+
+        Telas telas = new Telas();
+        Telas.PrimeiraTela();
+
+        int escolha = telas.getEscolha();
+
+        //Sempre tá indo na tela de login msm escolhendo cadastro
+        switch(escolha) {
             case 0:
                 LoginECadastro.FazerLogin();
+                Telas.SegundaTela();
+
                 break;
 
             case 1:
                 LoginECadastro.FazerCadastro();
-                // ***** Após o cadastro deve ser possível voltar ao menu inicial ****
+                Telas.PrimeiraTela();
                 break;
             case 2:
                 System.out.println("Sair selecionado.");
