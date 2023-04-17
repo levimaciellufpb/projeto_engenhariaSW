@@ -1,6 +1,6 @@
 package ufpb.si.engenhariaSW.Controller;
 
-import java.io.IOException;
+import java.io.*;
 import java.util.List;
 
 public interface Dados {

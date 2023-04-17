@@ -5,15 +5,19 @@ import ufpb.si.engenhariaSW.Model.Crianca;
 import ufpb.si.engenhariaSW.Model.Historico;
 import ufpb.si.engenhariaSW.Model.Usuario;
 
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
 public class Manager {
 
     private final HashMap<String, Usuario> usuarios;
+    private DadosProjeto dadosProjeto;
 
     public Manager(){
         usuarios = new HashMap<>();
+        dadosProjeto = new DadosProjeto("dados.txt");
     }
 
     //Possíveis métodos
@@ -135,11 +139,35 @@ public class Manager {
         }
     }
 
-    public void carregarDados(){
-
+    public HashMap<String, Usuario> carregarDados(){
+        return null;
     }
 
     public void escreverDados(){
+        List<String> dadosEmString = new ArrayList<>();
+
+        StringBuilder builder = new StringBuilder();
+        String nomeU, email, senha;
+
+        for(Usuario u: usuarios.values()){
+
+            nomeU = u.getNome();
+            email = u.getEmail();
+            senha = u.getSenha();
+
+            builder.append(nomeU).append(email).append(senha);
+
+            dadosEmString.add(builder.toString());
+
+            //Limpar o builder
+            builder.setLength(0);
+        }
+        try{
+            dadosProjeto.writeDados(dadosEmString);
+        }
+        catch (IOException e){
+            System.err.println(e.getMessage());
+        }
 
     }
 

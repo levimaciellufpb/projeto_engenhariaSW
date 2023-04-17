@@ -56,6 +56,7 @@ public class testMain {
 
                 case -1:
                     System.out.println("saindo...");
+                    manager.escreverDados();
                     continuar = false;
                     break;
 
