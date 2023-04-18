@@ -7,20 +7,29 @@ public class Telas {
     private int escolha;
     public static void PrimeiraTela (){
         Object[] opcoes = {"Login", "Cadastrar", "Sair"};
-        int opcaoSelecionada = JOptionPane.showOptionDialog(null, "Escolha uma opção", "Histórico de Saúde",
-                JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE, null, opcoes, opcoes[0]);
+
+        int opcaoSelecionada = JOptionPane.showOptionDialog(null, "t", "t", JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE, null, opcoes, opcoes[0]);
+        if(opcaoSelecionada == 0){
+            LoginECadastro.FazerLogin();
+        } else if (opcaoSelecionada == 1) {
+            LoginECadastro.FazerCadastro();
+        } else if (opcaoSelecionada == 2) {
+            JOptionPane.showMessageDialog(null, "Até mais!");
+        }
+
 
     }
-
-    public int getEscolha() {
-        return escolha;
-    }
-
-    public static void SegundaTela(){
-
-        Object[] opcoes1 = {"Doenças", "Medicações", "Dentições", "Consultas Médicas", "Alergias", "Outros", "Sair"};
-        int opcaoSelecionadaCadastro = JOptionPane.showOptionDialog(null, "Escolha uma opção", "Panel",
-                JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE, null, opcoes1, opcoes1[0]);
-    }
-
 }
+
+
+
+
+
+//    public static void SegundaTela(){
+//
+//        Object[] opcoes1 = {"Doenças", "Medicações", "Dentições", "Consultas Médicas", "Alergias", "Outros", "Sair"};
+//        int opcaoSelecionadaCadastro = JOptionPane.showOptionDialog(null, "Escolha uma opção", "Panel",
+//                JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE, null, opcoes1, opcoes1[0]);
+//    }
+
+
