@@ -147,7 +147,8 @@ public class Manager {
         List<String> dadosEmString = new ArrayList<>();
 
         StringBuilder builder = new StringBuilder();
-        String nomeU, email, senha;
+        String nomeU, email;
+        String senha;
 
         for(Usuario u: usuarios.values()){
 

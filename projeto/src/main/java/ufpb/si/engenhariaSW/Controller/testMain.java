@@ -30,7 +30,7 @@ public class testMain {
                     System.out.println("Digite senha de usuario");
                     String senha = sc.nextLine();
 
-                    Usuario u = new Usuario(email, senha, nome);
+                    Usuario u = new Usuario("", "", "");
 
                     manager.addUsuario(u);
                     break;

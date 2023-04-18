@@ -11,7 +11,7 @@ public class Usuario {
     private String senha;
     private List<Crianca> criancas;
 
-    public Usuario(String email, String senha, String nome){
+    public Usuario(String nome, String email, String senha){
         //tratamento de erro básico
         //Possivelmente validar email e validar senha
         this.nome = nome;
