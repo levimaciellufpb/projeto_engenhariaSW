@@ -155,7 +155,57 @@ public class Manager {
             email = u.getEmail();
             senha = u.getSenha();
 
-            builder.append(nomeU).append(email).append(senha);
+            builder.append(nomeU).append(",").append(email).append(",").append(senha);
+
+            //Impasse, visto que cada usuário tem uma lista de criancas
+
+
+
+
+            //atributos de criança
+            String nomeC, dataNascimento, genero, rg, cpf, nomeDoPai, nomeDaMae;
+            int idade;
+
+            //atributos de histórico
+            Historico historico;
+            String doencas, medicacoes, denticoes, consultas, alergias, outros;
+
+            if(u.getCriancas() != null){
+                //Ideia: add um contador da lista para saber quantas crianças tem
+                builder.append(",").append(u.getCriancas().size()).append(",");
+
+                for(Crianca c: u.getCriancas()){
+                    nomeC = c.getNome();
+                    dataNascimento = c.getDataNascimento();
+                    genero = c.getDataNascimento();
+                    rg = c.getRg();
+                    cpf = c.getCpf();
+                    nomeDoPai = c.getNomeDoPai();
+                    nomeDaMae = c.getNomeDaMae();
+
+                    builder.append(nomeC).append(",").append(dataNascimento).append(",").append(genero).append(",")
+                            .append(rg).append(",").append(cpf).append(",").append(nomeDoPai).append(",")
+                            .append(nomeDaMae).append(",");
+
+                    //Necessário escrever cada atributo do histórico
+                    historico = c.getHistorico();
+                    doencas = historico.getDoencas();
+                    medicacoes = historico.getMedicacoes();
+                    denticoes = historico.getDenticoes();
+                    consultas = historico.getConsultas();
+                    alergias = historico.getAlergias();
+                    outros = historico.getOutros();
+
+                    builder.append(doencas).append(",").append(medicacoes).append(",").append(denticoes).append(",")
+                            .append(consultas).append(",").append(alergias).append(",").append(outros);
+
+
+                }
+
+            }
+
+            //builder.append("\n");
+
 
             dadosEmString.add(builder.toString());
 
