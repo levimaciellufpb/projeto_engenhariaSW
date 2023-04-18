@@ -5,9 +5,10 @@ import javax.swing.*;
 public class Main {
 
     public static void main(String[] args) {
-        JPasswordField passwordField = new JPasswordField();
 
+        JPasswordField passwordField = new JPasswordField();
         Telas.PrimeiraTela();
+
     }
 
 
