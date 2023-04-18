@@ -8,7 +8,7 @@ public class Telas {
     public static void PrimeiraTela (){
         Object[] opcoes = {"Login", "Cadastrar", "Sair"};
 
-        int opcaoSelecionada = JOptionPane.showOptionDialog(null, "t", "t", JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE, null, opcoes, opcoes[0]);
+        int opcaoSelecionada = JOptionPane.showOptionDialog(null, "Escolha uma opção", "Histórico de saúde", JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE, null, opcoes, opcoes[0]);
         if(opcaoSelecionada == 0){
             LoginECadastro.FazerLogin();
         } else if (opcaoSelecionada == 1) {
