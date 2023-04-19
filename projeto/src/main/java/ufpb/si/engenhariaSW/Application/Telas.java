@@ -1,44 +1,89 @@
-//package ufpb.si.engenhariaSW.Application;
+package ufpb.si.engenhariaSW.Application;
+
+import ufpb.si.engenhariaSW.Model.Historico;
+import javax.swing.*;
+
+public class Telas {
+
+    private int escolha;
+
+    public static void PrimeiraTela() {
+        Object[] opcoes = {"Login", "Cadastrar", "Sair"};
+
+        boolean sair = false;
+
+        while (!sair) {
+            int opcaoSelecionada = JOptionPane.showOptionDialog(null, "Escolha uma opção", "Histórico de saúde", JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE, null, opcoes, opcoes[0]);
+            if (opcaoSelecionada == 0) {
+                LoginECadastro.FazerLogin();
+                Telas.SegundaTela();
+            } else if (opcaoSelecionada == 1) {
+                LoginECadastro.FazerCadastro();
+            } else if (opcaoSelecionada == 2) {
+                JOptionPane.showMessageDialog(null, "Até mais!");
+                sair = true;
+            }
+        }
+
+    }
+
+    public static void SegundaTela() {
+
+
+        Object[] opcoes1 = {"Lista do Histórico", "Cadastar novo arquivo", "Voltar"};
+        Object[] opcoes2 = {"Doenças", "Medicações", "Dentições", "Consultas Médicas", "Alergias", "Outros", "Voltar"};
+
+        boolean sair = false;
+
+        while (!sair) {
+            int opcaoSelecionadaCadastro = JOptionPane.showOptionDialog(null, "Escolha uma opção", "Painel",
+                    JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE, null, opcoes1, opcoes1[0]);
+            if (opcaoSelecionadaCadastro == 0) {
+                int opcaoSelecionadaCadastro1 = JOptionPane.showOptionDialog(null, "Escolha uma opção", "Painel",
+                        JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE, null, opcoes2, opcoes2[0]);
+                /**
+                 * Eu preciso saber como pegar a lista de cada opção
+                 **/
+//                if (opcaoSelecionadaCadastro1 == 0) {
 //
-//import javax.swing.*;
+//                }
+//                else if (opcaoSelecionadaCadastro1 == 1) {
 //
-//public class Telas {
+//                }
+//                else if (opcaoSelecionadaCadastro1 == 2) {
 //
-//    private int escolha;
+//                }
+//                else if (opcaoSelecionadaCadastro1 == 3) {
 //
-//    public static void PrimeiraTela() {
-//        Object[] opcoes = {"Login", "Cadastrar", "Sair"};
+//                }
+//                else if (opcaoSelecionadaCadastro1 == 4) {
 //
-//        boolean sair = false;
+//                }
+//                else if (opcaoSelecionadaCadastro1 == 5) {
 //
-//        while (!sair) {
-//            int opcaoSelecionada = JOptionPane.showOptionDialog(null, "Escolha uma opção", "Histórico de saúde", JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE, null, opcoes, opcoes[0]);
-//            if (opcaoSelecionada == 0) {
-//                LoginECadastro.FazerLogin();
-//                Telas.SegundaTela();
-//            } else if (opcaoSelecionada == 1) {
-//                LoginECadastro.FazerCadastro();
-//            } else if (opcaoSelecionada == 2) {
-//                JOptionPane.showMessageDialog(null, "Até mais!");
-//                sair = true;
-//            }
-//        }
-//
-//    }
-//
-//    public static void SegundaTela() {
-//
-//        Object[] opcoes1 = {"Doenças", "Medicações", "Dentições", "Consultas Médicas", "Alergias", "Outros", "Voltar"};
-//
-//        boolean sair = false;
-//
-//        while (!sair) {
-//            int opcaoSelecionadaCadastro = JOptionPane.showOptionDialog(null, "Escolha uma opção", "Panel",
-//                    JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE, null, opcoes1, opcoes1[0]);
-//            if (opcaoSelecionadaCadastro == 6) {
-//                sair = true;
-//            }
-//        }
-//    }
-//}
-//
+//                }
+
+            } else if (opcaoSelecionadaCadastro == 1){
+                int opcaoSelecionadaCadastro2 = JOptionPane.showOptionDialog(null, "Escolha uma opção", "Painel",
+                        JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE, null, opcoes2, opcoes2[0]);
+                if (opcaoSelecionadaCadastro2 == 0) {
+                    cadastroDadosMedicos.cadastroDoenca();
+                } else if (opcaoSelecionadaCadastro2 == 1) {
+                    cadastroDadosMedicos.cadastroMedicamento();
+                } else if (opcaoSelecionadaCadastro2 == 2) {
+                    cadastroDadosMedicos.cadastroDenticao();
+                } else if (opcaoSelecionadaCadastro2 == 3) {
+                    cadastroDadosMedicos.cadastroConsultaMedica();
+                } else if (opcaoSelecionadaCadastro2 == 4) {
+                    cadastroDadosMedicos.cadastroAlergias();
+                } else if (opcaoSelecionadaCadastro2 == 5) {
+                    cadastroDadosMedicos.cadastroOutros();
+                }
+
+            } else {
+                sair = true;
+            }
+        }
+    }
+}
+
