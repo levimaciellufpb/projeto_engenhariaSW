@@ -9,7 +9,7 @@ public class Usuario {
     private String nome;
     private String email;
     private String senha;
-    private List<Crianca> criancas;
+    private List<Crianca> criancas = new ArrayList<>();
 
     public Usuario(String nome, String email, String senha){
         //tratamento de erro básico
@@ -17,11 +17,11 @@ public class Usuario {
         this.nome = nome;
         this.email = email;
         this.senha = senha;
-        List<Crianca> criancas = new ArrayList<>();
     }
 
     public void addCrianca(Crianca crianca){
         //crianca não pode ser null
+
         criancas.add(crianca);
     }
 

@@ -139,8 +139,29 @@ public class Manager {
         }
     }
 
-    public HashMap<String, Usuario> carregarDados(){
-        return null;
+    public void carregarDados(){
+
+        try {
+            List<String> dadosCarregados = dadosProjeto.readDados();
+
+            for(String s : dadosCarregados){
+                System.out.println(s);
+
+
+
+
+            }
+
+
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        catch (RuntimeException f){
+            System.err.println(f.getMessage());
+        }
+
+
+
     }
 
     public void escreverDados(){
@@ -178,7 +199,7 @@ public class Manager {
                 for(Crianca c: u.getCriancas()){
                     nomeC = c.getNome();
                     dataNascimento = c.getDataNascimento();
-                    genero = c.getDataNascimento();
+                    genero = c.getGenero();
                     rg = c.getRg();
                     cpf = c.getCpf();
                     nomeDoPai = c.getNomeDoPai();
@@ -227,6 +248,17 @@ public class Manager {
     private boolean usuarioExiste(Usuario usuario){
        return usuarios.containsValue(usuario);
     }
+    private boolean usuarioExiste(String username){return usuarios.containsKey(username);}
+
+    public Usuario getUsuario(String nomeUsuario){
+
+        if(!usuarioExiste(nomeUsuario))
+            return null;
+
+        return usuarios.get(nomeUsuario);
+
+    }
+
 
     private boolean criancaExiste(Usuario usuario, Crianca crianca){
         return usuarioExiste(usuario) && usuario.getCriancas().contains(crianca);
