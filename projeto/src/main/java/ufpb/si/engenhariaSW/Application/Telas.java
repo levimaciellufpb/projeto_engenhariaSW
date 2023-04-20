@@ -41,27 +41,25 @@ public class Telas {
             if (opcaoSelecionadaCadastro == 0) {
                 int opcaoSelecionadaCadastro1 = JOptionPane.showOptionDialog(null, "Escolha uma opção", "Painel",
                         JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE, null, opcoes2, opcoes2[0]);
-                /**
-                 * Eu preciso saber como pegar a lista de cada opção
-                 **/
-//                if (opcaoSelecionadaCadastro1 == 0) {
-//
-//                }
-//                else if (opcaoSelecionadaCadastro1 == 1) {
-//
-//                }
-//                else if (opcaoSelecionadaCadastro1 == 2) {
-//
-//                }
-//                else if (opcaoSelecionadaCadastro1 == 3) {
-//
-//                }
-//                else if (opcaoSelecionadaCadastro1 == 4) {
-//
-//                }
-//                else if (opcaoSelecionadaCadastro1 == 5) {
-//
-//                }
+                Historico his = new Historico();
+                if (opcaoSelecionadaCadastro1 == 0) {
+                    JOptionPane.showMessageDialog(null, "Doenças: " + his.getDoencas());
+                }
+                else if (opcaoSelecionadaCadastro1 == 1) {
+                    JOptionPane.showMessageDialog(null, "Medicamentos: " + his.getDoencas());
+                }
+                else if (opcaoSelecionadaCadastro1 == 2) {
+                    JOptionPane.showMessageDialog(null, "Dentições: " + his.getDoencas());
+                }
+                else if (opcaoSelecionadaCadastro1 == 3) {
+                    JOptionPane.showMessageDialog(null, "Consultas Médicas" + his.getDoencas());
+                }
+                else if (opcaoSelecionadaCadastro1 == 4) {
+                    JOptionPane.showMessageDialog(null, "Alergias" + his.getDoencas());
+                }
+                else if (opcaoSelecionadaCadastro1 == 5) {
+                    JOptionPane.showMessageDialog(null, "Outros" + his.getDoencas());
+                }
 
             } else if (opcaoSelecionadaCadastro == 1){
                 int opcaoSelecionadaCadastro2 = JOptionPane.showOptionDialog(null, "Escolha uma opção", "Painel",
