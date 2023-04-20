@@ -8,7 +8,10 @@ public class Usuario {
 
     private String nome;
     private String email;
+
     private String senha;
+
+
     private List<Crianca> criancas = new ArrayList<>();
 
     public Usuario(String nome, String email, String senha){
@@ -17,6 +20,7 @@ public class Usuario {
         this.nome = nome;
         this.email = email;
         this.senha = senha;
+
     }
 
     public void addCrianca(Crianca crianca){
@@ -73,4 +77,6 @@ public class Usuario {
     public String getSenha() {
         return senha;
     }
+
+
 }

@@ -24,6 +24,7 @@ public class Telas {
                 sair = true;
             }
         }
+        javax.swing.JDesktopPane jDesktopPane1;
 
     }
 
