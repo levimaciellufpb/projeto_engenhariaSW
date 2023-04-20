@@ -5,8 +5,9 @@ import ufpb.si.engenhariaSW.Model.Crianca;
 import ufpb.si.engenhariaSW.Model.Historico;
 import ufpb.si.engenhariaSW.Model.Usuario;
 
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
@@ -141,14 +142,73 @@ public class Manager {
 
     public void carregarDados(){
 
+        String nomeU, email, senha;
+        String nomeC, dataNascimento, genero, rg, cpf, nomePai, nomeMae;
+        String doencas, medicacoes, denticoes, consultas, alergias, outros;
+        int idade, numCriancas;
+
+
         try {
             List<String> dadosCarregados = dadosProjeto.readDados();
 
             for(String s : dadosCarregados){
                 System.out.println(s);
 
+                String [] splitted = s.split(",", -1);
+
+                //LINHA DE DEBUG
+                System.out.println(Arrays.toString(splitted));
+                System.out.println("Tamanho da linha acima:" +  splitted.length + "\n");
+
+                int cont = 0;
+
+                nomeU = splitted[cont++];
+                email = splitted[cont++];
+                senha = splitted[cont++];
+
+                numCriancas = Integer.parseInt(splitted[cont++]);
+
+                Usuario newUsuario = new Usuario(nomeU, email, senha);
+                Crianca newCrianca;
 
 
+                for(int i = 0; i < numCriancas; i++){
+                    nomeC = splitted[cont++];
+                    idade = Integer.parseInt(splitted[cont++]);
+                    dataNascimento = splitted[cont++];
+                    genero = splitted[cont++];
+                    rg = splitted[cont++];
+                    cpf = splitted[cont++];
+                    nomeMae = splitted[cont++];
+                    nomePai = splitted[cont++];
+
+                    newCrianca = new Crianca(nomeC,idade,dataNascimento,genero,rg,cpf,nomeMae,nomePai);
+                    Historico hist = newCrianca.getHistorico();
+
+                    doencas = splitted[cont++];
+                    hist.setDoencas(doencas);
+
+                    medicacoes  = splitted[cont++];
+                    hist.setMedicacoes(medicacoes);
+
+                    denticoes = splitted[cont++];
+                    hist.setDenticoes(denticoes);
+
+                    consultas = splitted[cont++];
+                    hist.setConsultas(consultas);
+
+                    alergias = splitted[cont++];
+                    hist.setAlergias(alergias);
+
+                    outros = splitted[cont++];
+                    hist.setOutros(outros);
+
+
+                    newUsuario.addCrianca(newCrianca);
+
+                }
+
+                usuarios.put(newUsuario.getNome(), newUsuario);
 
             }
 
@@ -156,11 +216,6 @@ public class Manager {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        catch (RuntimeException f){
-            System.err.println(f.getMessage());
-        }
-
-
 
     }
 
@@ -198,6 +253,7 @@ public class Manager {
 
                 for(Crianca c: u.getCriancas()){
                     nomeC = c.getNome();
+                    idade = c.getIdade();
                     dataNascimento = c.getDataNascimento();
                     genero = c.getGenero();
                     rg = c.getRg();
@@ -205,7 +261,7 @@ public class Manager {
                     nomeDoPai = c.getNomeDoPai();
                     nomeDaMae = c.getNomeDaMae();
 
-                    builder.append(nomeC).append(",").append(dataNascimento).append(",").append(genero).append(",")
+                    builder.append(nomeC).append(",").append(idade).append(",").append(dataNascimento).append(",").append(genero).append(",")
                             .append(rg).append(",").append(cpf).append(",").append(nomeDoPai).append(",")
                             .append(nomeDaMae).append(",");
 
@@ -219,7 +275,7 @@ public class Manager {
                     outros = historico.getOutros();
 
                     builder.append(doencas).append(",").append(medicacoes).append(",").append(denticoes).append(",")
-                            .append(consultas).append(",").append(alergias).append(",").append(outros);
+                            .append(consultas).append(",").append(alergias).append(",").append(outros).append(",");
 
 
                 }
