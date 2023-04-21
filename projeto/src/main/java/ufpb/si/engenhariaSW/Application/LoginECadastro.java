@@ -3,7 +3,7 @@ import ufpb.si.engenhariaSW.Model.Usuario;
 import javax.swing.*;
 
 
-public class LoginECadastro {
+public class LoginECadastro extends Telas{
 
 
 
@@ -11,6 +11,7 @@ public class LoginECadastro {
 
     public static void FazerCadastro(){
 
+        //Method not fool-proof
 
         JPasswordField passwordField = new JPasswordField();
 
@@ -24,7 +25,7 @@ public class LoginECadastro {
         char[] senhaCharArray = passwordField.getPassword();
         String senhaCadastro = new String(senhaCharArray);
 
-
+        Usuario novoUsuario = new Usuario(nomeCad,emailCad,senhaCadastro);
     }
 
     public static void FazerLogin(){
@@ -37,6 +38,10 @@ public class LoginECadastro {
         String senhaLogin = new String(senhaCharArray);
 
         JOptionPane.showMessageDialog(null,"Login feito com sucesso!");
+    }
+
+    private void cadastrar(Usuario usuario){
+        super.manager.addUsuario(usuario);
     }
 
 

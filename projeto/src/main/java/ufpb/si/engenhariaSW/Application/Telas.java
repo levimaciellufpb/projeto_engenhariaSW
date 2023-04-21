@@ -1,10 +1,11 @@
 package ufpb.si.engenhariaSW.Application;
 
+import ufpb.si.engenhariaSW.Controller.Manager;
 import ufpb.si.engenhariaSW.Model.Historico;
 import javax.swing.*;
 
 public class Telas {
-
+    protected Manager manager;
     private int escolha;
 
     public static void PrimeiraTela() {
