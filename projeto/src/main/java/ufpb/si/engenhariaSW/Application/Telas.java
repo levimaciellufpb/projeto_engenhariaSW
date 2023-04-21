@@ -11,7 +11,7 @@ public class Telas {
     protected static Manager manager = new Manager();
     private int escolha;
 
-    public static void PrimeiraTela() {
+    public static void PrimeiraTela()  {
         manager.carregarDados();
         Object[] opcoes = {"Login", "Cadastrar", "Sair"};
 
