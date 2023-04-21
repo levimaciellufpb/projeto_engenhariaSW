@@ -12,6 +12,7 @@ public class Telas {
     private int escolha;
 
     public static void PrimeiraTela() {
+        manager.carregarDados();
         Object[] opcoes = {"Login", "Cadastrar", "Sair"};
 
         boolean sair = false;
@@ -49,6 +50,7 @@ public class Telas {
 
             else if (opcaoSelecionada == 2) {
                 JOptionPane.showMessageDialog(null, "Até mais!");
+                manager.escreverDados();
                 sair = true;
             }
         }

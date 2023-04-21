@@ -164,13 +164,8 @@ public class Manager {
             List<String> dadosCarregados = dadosProjeto.readDados();
 
             for(String s : dadosCarregados){
-                System.out.println(s);
 
                 String [] splitted = s.split(",", -1);
-
-                //LINHA DE DEBUG
-                System.out.println(Arrays.toString(splitted));
-                System.out.println("Tamanho da linha acima:" +  splitted.length + "\n");
 
                 int cont = 0;
 
