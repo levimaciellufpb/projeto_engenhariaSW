@@ -9,7 +9,7 @@ public class LoginECadastro extends Telas{
 
 
 
-    public static void FazerCadastro(){
+    public static Usuario FazerCadastro(){
 
         //Method not fool-proof
 
@@ -25,7 +25,7 @@ public class LoginECadastro extends Telas{
         char[] senhaCharArray = passwordField.getPassword();
         String senhaCadastro = new String(senhaCharArray);
 
-        Usuario novoUsuario = new Usuario(nomeCad,emailCad,senhaCadastro);
+        return new Usuario(nomeCad,emailCad,senhaCadastro);
     }
 
     public static void FazerLogin(){
@@ -37,13 +37,9 @@ public class LoginECadastro extends Telas{
         char[] senhaCharArray = passwordField.getPassword();
         String senhaLogin = new String(senhaCharArray);
 
+
+
         JOptionPane.showMessageDialog(null,"Login feito com sucesso!");
     }
-
-    private void cadastrar(Usuario usuario){
-        super.manager.addUsuario(usuario);
-    }
-
-
 
 }

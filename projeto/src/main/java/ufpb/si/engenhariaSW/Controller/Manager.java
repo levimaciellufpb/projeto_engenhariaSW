@@ -1,5 +1,6 @@
 package ufpb.si.engenhariaSW.Controller;
 
+import ufpb.si.engenhariaSW.Exceptions.UsuarioException;
 import ufpb.si.engenhariaSW.Model.AlterarHistorico;
 import ufpb.si.engenhariaSW.Model.Crianca;
 import ufpb.si.engenhariaSW.Model.Historico;
@@ -26,9 +27,20 @@ public class Manager {
     // AlterarDadosDaCriança (deixar em off por enquanto) verHistórico, alterarHistórico
     // Ideal é trocar todos os retornos null por exceções personalizadas
 
-    public void addUsuario(Usuario usuario){
+    //Adiciona um usuário
+    public void addUsuario(Usuario usuario) throws UsuarioException {
         //usuario não pode ser null
+        if(usuario == null || usuario.getNome() == null || usuario.getEmail() == null || usuario.getSenha() == null)
+            throw new RuntimeException("addUsuario: Usuario não pode ser null! Nem seus atributos");
+
+        //Nenhum de seu atributos podem ser strings vazias
+        if(usuario.getNome().equals("") || usuario.getEmail().equals("")|| usuario.getSenha().equals(""))
+            throw new RuntimeException("addUsusrio: Usuario não pode ter seu atributos string vazia!");
+
         //talvez não permitir adicionar usuários de mesmo nome para evitar bugs
+        if(usuarios.containsKey(usuario.getNome()))
+            throw new UsuarioException("addUsuario: Não é possível adicionar usuários de mesmo nome");
+
         usuarios.put(usuario.getNome(), usuario);
     }
 
@@ -320,6 +332,18 @@ public class Manager {
         return usuarioExiste(usuario) && usuario.getCriancas().contains(crianca);
     }
 
+    public boolean validarUsuario(String email, String senha){
+
+        if(email == null || senha == null)
+            throw new RuntimeException("ValidarUsuario: email ou senha são nulos");
+
+        for(Usuario u: usuarios.values()){
+            if(u.getEmail().equalsIgnoreCase(email) && u.getSenha().equals(senha))
+                return true;
+        }
+
+        return false;
+    }
 
 
 

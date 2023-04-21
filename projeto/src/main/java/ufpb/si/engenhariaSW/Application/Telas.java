@@ -1,11 +1,14 @@
 package ufpb.si.engenhariaSW.Application;
 
 import ufpb.si.engenhariaSW.Controller.Manager;
+import ufpb.si.engenhariaSW.Exceptions.UsuarioException;
 import ufpb.si.engenhariaSW.Model.Historico;
+import ufpb.si.engenhariaSW.Model.Usuario;
+
 import javax.swing.*;
 
 public class Telas {
-    protected Manager manager;
+    protected static Manager manager = new Manager();
     private int escolha;
 
     public static void PrimeiraTela() {
@@ -18,9 +21,22 @@ public class Telas {
             if (opcaoSelecionada == 0) {
                 LoginECadastro.FazerLogin();
                 Telas.SegundaTela();
-            } else if (opcaoSelecionada == 1) {
-                LoginECadastro.FazerCadastro();
-            } else if (opcaoSelecionada == 2) {
+            }
+
+            else if (opcaoSelecionada == 1) {
+                Usuario novoUsuario = LoginECadastro.FazerCadastro();
+
+                try{
+                    manager.addUsuario(novoUsuario);
+                    JOptionPane.showMessageDialog(null, "Usuário adicionado com sucesso");
+
+                }
+                catch (UsuarioException u){
+                    JOptionPane.showMessageDialog(null, "Não foi possível adicionar usuário, pois já existe um usuário com mesmo nome");
+                }
+            }
+
+            else if (opcaoSelecionada == 2) {
                 JOptionPane.showMessageDialog(null, "Até mais!");
                 sair = true;
             }
