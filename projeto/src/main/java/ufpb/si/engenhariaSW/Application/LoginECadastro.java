@@ -28,7 +28,7 @@ public class LoginECadastro extends Telas{
         return new Usuario(nomeCad,emailCad,senhaCadastro);
     }
 
-    public static void FazerLogin(){
+    public static String FazerLogin(){
         JPasswordField passwordField = new JPasswordField();
 
         String emailLogin = JOptionPane.showInputDialog(null, "Digite seu endereço de e-mail:", "E-mail", JOptionPane.PLAIN_MESSAGE);
@@ -37,9 +37,8 @@ public class LoginECadastro extends Telas{
         char[] senhaCharArray = passwordField.getPassword();
         String senhaLogin = new String(senhaCharArray);
 
+        return emailLogin + "#" + senhaLogin;
 
-
-        JOptionPane.showMessageDialog(null,"Login feito com sucesso!");
     }
 
 }

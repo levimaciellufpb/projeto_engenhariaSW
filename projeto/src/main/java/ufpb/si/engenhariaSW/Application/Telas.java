@@ -19,8 +19,19 @@ public class Telas {
         while (!sair) {
             int opcaoSelecionada = JOptionPane.showOptionDialog(null, "Escolha uma opção", "Histórico de saúde", JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE, null, opcoes, opcoes[0]);
             if (opcaoSelecionada == 0) {
-                LoginECadastro.FazerLogin();
-                Telas.SegundaTela();
+
+                String loginInfo = LoginECadastro.FazerLogin();
+                String [] loginSplit = loginInfo.split("#");
+
+                //Se a senha for válida:
+                if(manager.validarUsuario(loginSplit[0], loginSplit[1])){
+                    JOptionPane.showMessageDialog(null,"Login feito com sucesso!");
+                    Telas.SegundaTela();
+                }
+                //Senha inválida
+                else{
+                    JOptionPane.showMessageDialog(null, "Email ou senha estão incorretos!");
+                }
             }
 
             else if (opcaoSelecionada == 1) {
