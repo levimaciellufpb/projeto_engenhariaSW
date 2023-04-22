@@ -5,15 +5,15 @@ import java.util.Objects;
 public class Crianca {
     private String nome;
     private int idade;
-    private String dataNascimento;
+    private int dataNascimento;
     private String genero;
-    private String rg;
-    private String cpf;
+    private int rg;
+    private int cpf;
     private String nomeDoPai;
     private String nomeDaMae;
     private Historico historico = new Historico();
 
-    public Crianca(String nome, int idade, String dataNascimento, String genero, String rg, String cpf,String nomeDaMae, String nomeDoPai){
+    public Crianca(String nome, int idade, int dataNascimento, String genero, int rg, int cpf,String nomeDaMae, String nomeDoPai){
         this.nome = nome;
         this.idade = idade;
         this.dataNascimento = dataNascimento;
@@ -56,11 +56,11 @@ public class Crianca {
         this.idade = idade;
     }
 
-    public String getDataNascimento() {
+    public int getDataNascimento() {
         return dataNascimento;
     }
 
-    public void setDataNascimento(String dataNascimento) {
+    public void setDataNascimento(int dataNascimento) {
         this.dataNascimento = dataNascimento;
     }
 
@@ -72,19 +72,19 @@ public class Crianca {
         this.genero = genero;
     }
 
-    public String getRg() {
+    public int getRg() {
         return rg;
     }
 
-    public void setRg(String rg) {
+    public void setRg(int rg) {
         this.rg = rg;
     }
 
-    public String getCpf() {
+    public int getCpf() {
         return cpf;
     }
 
-    public void setCpf(String cpf) {
+    public void setCpf(int cpf) {
         this.cpf = cpf;
     }
 

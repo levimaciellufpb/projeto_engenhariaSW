@@ -155,9 +155,9 @@ public class Manager {
     public void carregarDados(){
 
         String nomeU, email, senha;
-        String nomeC, dataNascimento, genero, rg, cpf, nomePai, nomeMae;
+        String nomeC, genero, nomePai, nomeMae;
         String doencas, medicacoes, denticoes, consultas, alergias, outros;
-        int idade, numCriancas;
+        int idade, numCriancas, dataNascimento, rg, cpf;
 
 
         try {
@@ -182,10 +182,10 @@ public class Manager {
                 for(int i = 0; i < numCriancas; i++){
                     nomeC = splitted[cont++];
                     idade = Integer.parseInt(splitted[cont++]);
-                    dataNascimento = splitted[cont++];
+                    dataNascimento = Integer.parseInt(splitted[cont++]);
                     genero = splitted[cont++];
-                    rg = splitted[cont++];
-                    cpf = splitted[cont++];
+                    rg = Integer.parseInt(splitted[cont++]);
+                    cpf = Integer.parseInt(splitted[cont++]);
                     nomeMae = splitted[cont++];
                     nomePai = splitted[cont++];
 
@@ -247,8 +247,8 @@ public class Manager {
 
 
             //atributos de criança
-            String nomeC, dataNascimento, genero, rg, cpf, nomeDoPai, nomeDaMae;
-            int idade;
+            String nomeC, genero, nomeDoPai, nomeDaMae;
+            int idade, dataNascimento, rg, cpf;
 
             //atributos de histórico
             Historico historico;
