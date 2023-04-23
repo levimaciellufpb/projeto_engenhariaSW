@@ -59,16 +59,25 @@ public class Telas {
             }
 
             else if (opcaoSelecionada == 1) {
-                Usuario novoUsuario = LoginECadastro.FazerCadastro();
-
                 try{
-                    manager.addUsuario(novoUsuario);
-                    JOptionPane.showMessageDialog(null, "Usuário adicionado com sucesso");
+                    Usuario novoUsuario = LoginECadastro.FazerCadastro();
 
+                    try{
+                        manager.addUsuario(novoUsuario);
+                        JOptionPane.showMessageDialog(null, "Usuário adicionado com sucesso");
+
+                    }
+                    catch (UsuarioException u){
+                        JOptionPane.showMessageDialog(null, "Não foi possível adicionar usuário, pois já existe um usuário com mesmo nome");
+                    }
+                    
                 }
-                catch (UsuarioException u){
-                    JOptionPane.showMessageDialog(null, "Não foi possível adicionar usuário, pois já existe um usuário com mesmo nome");
+                catch (RuntimeException r){
+                    JOptionPane.showMessageDialog(null, "Cadastro cancelado.", "Formulário De Cadastro", JOptionPane.WARNING_MESSAGE);
                 }
+
+
+
             }
 
             else if (opcaoSelecionada == 2) {
