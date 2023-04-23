@@ -38,9 +38,7 @@ public class LoginECadastro extends Telas{
         String senhaCad = new String(password.clone());
         Usuario u = new Usuario(nomeCad,emailCad,senhaCad);
 
-        if (result == JOptionPane.OK_OPTION) {
-            JOptionPane.showMessageDialog(null,"Cadastrou");
-        } else {
+        if (result != JOptionPane.OK_OPTION) {
             JOptionPane.showMessageDialog(null, "Cadastro cancelado.", "Formulário De Cadastro", JOptionPane.WARNING_MESSAGE);
         }
         return u;

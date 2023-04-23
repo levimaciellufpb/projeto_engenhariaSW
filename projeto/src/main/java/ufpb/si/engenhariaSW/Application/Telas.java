@@ -83,8 +83,6 @@ public class Telas {
 
     public static void SegundaTela(){
 
-        manager.carregarDados();
-
         Object[] opcoes = {"Novo", "Listar", "Voltar"};
 
         boolean sair = false;
@@ -127,7 +125,6 @@ public class Telas {
 
             else if (opcaoSelecionada == 2) {
                 JOptionPane.showMessageDialog(null, "Até mais!");
-                manager.escreverDados();
                 sair = true;
             }
         }
