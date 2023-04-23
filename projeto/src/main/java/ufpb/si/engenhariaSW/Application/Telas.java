@@ -7,11 +7,17 @@ import ufpb.si.engenhariaSW.Model.Historico;
 import ufpb.si.engenhariaSW.Model.Usuario;
 
 import javax.swing.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
 
 public class Telas {
 
     protected static Manager manager = new Manager();
     private static Usuario usuarioAtual;
+    private static Crianca criancaAtual;
+
+
     private int escolha;
 
     public static void PrimeiraTela()  {
@@ -91,7 +97,25 @@ public class Telas {
             }
 
             else if (opcaoSelecionada == 1) {
-                //listarCriança
+                List<Object> listaNomes = new ArrayList<>();
+                List<Crianca> nomeCria = manager.getCriancas(usuarioAtual);
+
+                for (Crianca nome : nomeCria ) {
+                    listaNomes.add((Object) nome.getNome());
+                }
+
+// Converter a lista de nomes em um array de objetos
+                Object[] nomes = listaNomes.toArray();
+                int criancaSelecionada = JOptionPane.showOptionDialog(null, "Escolha uma criança","Histórico de saúde",
+                        JOptionPane.DEFAULT_OPTION,JOptionPane.PLAIN_MESSAGE,null, nomes, nomes[0]);
+
+                if(criancaSelecionada == JOptionPane.OK_OPTION){
+                    for(Crianca nome: nomeCria ){
+                        listaNomes.equals(nomeCria);
+                        Telas.TerceiraTela(); // aq é a criança atual
+                    }
+
+                }
             }
 
             else if (opcaoSelecionada == 2) {
@@ -117,7 +141,17 @@ public class Telas {
             if (opcaoSelecionadaCadastro == 0) {
                 int opcaoSelecionadaCadastro1 = JOptionPane.showOptionDialog(null, "Escolha uma opção", "Painel",
                         JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE, null, opcoes2, opcoes2[0]);
+
+
+                //*******************************************************//
+                // pode tá certo mas deve puxar os dados da criaça atual
+
+//                criancaAtual = manager.getCriancas(usuarioAtual);
+//
+//                Historico his = manager.getHistoricoDaCrianca(usuarioAtual.getCriancas(criancaAtual)); // falta resolver isso
+
                 Historico his = new Historico();
+
                 if (opcaoSelecionadaCadastro1 == 0) {
                     JOptionPane.showMessageDialog(null, "Doenças: " + his.getDoencas());
                 }

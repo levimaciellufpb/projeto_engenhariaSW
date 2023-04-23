@@ -6,11 +6,12 @@ public class Main {
 
     public static void main(String[] args) {
 
+        //Telas.SegundaTela();
 
 //        LoginECadastro.FazerLogin();
 //
 //        CadastrarCria.Cadastrar();
-        Telas.PrimeiraTela();
+       Telas.PrimeiraTela();
 
     }
 
