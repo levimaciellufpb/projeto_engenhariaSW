@@ -15,29 +15,79 @@ public class LoginECadastro extends Telas{
 
         JPasswordField passwordField = new JPasswordField();
 
+        JPanel formularioPanel = new JPanel();
+        JTextField nomeField = new JTextField(10);
+        JTextField emailField = new JTextField(10);
+        JPasswordField senhaField = new JPasswordField(10);
+        formularioPanel.setLayout(new BoxLayout(formularioPanel, BoxLayout.Y_AXIS)); //Deixa um abaixo do outro
 
-        String nomeCad = JOptionPane.showInputDialog(null, "Digite seu nome: ", "Nome", JOptionPane.PLAIN_MESSAGE);
+        formularioPanel.add(new JLabel("Nome:"));
+        formularioPanel.add(nomeField);
+        formularioPanel.add(new JLabel("Email:"));
+        formularioPanel.add(emailField);
+        formularioPanel.add(new JLabel("Senha:"));
+        formularioPanel.add(senhaField);
 
 
-        String emailCad = JOptionPane.showInputDialog(null, "Digite seu endereço de e-mail:", "E-mail", JOptionPane.PLAIN_MESSAGE);
+        int result = JOptionPane.showOptionDialog(null, formularioPanel, "TELA DE CADASTRO",
+                JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE, null, null, null);
 
-        int senhaCad = JOptionPane.showConfirmDialog(null, passwordField, "Digite sua senha:", JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
-        char[] senhaCharArray = passwordField.getPassword();
-        String senhaCadastro = new String(senhaCharArray);
+        String nomeCad = nomeField.getText();
+        String emailCad = emailField.getText();
+        char[] password = senhaField.getPassword();
+        String senhaCad = new String(password.clone());
+        Usuario u = new Usuario(nomeCad,emailCad,senhaCad);
 
-        return new Usuario(nomeCad,emailCad,senhaCadastro);
+        if (result == JOptionPane.OK_OPTION) {
+//            String nomeCad = nomeField.getText();
+//            String emailCad = emailField.getText();
+//            char[] password = senhaField.getPassword();
+//            String senhaCad = new String(password.clone());
+            JOptionPane.showMessageDialog(null,"Cadastrou");
+//            return new Usuario(nomeCad,emailCad,senhaCad);
+
+        } else {
+            JOptionPane.showMessageDialog(null, "Cadastro cancelado.", "Formulário De Cadastro", JOptionPane.WARNING_MESSAGE);
+        }
+        return u;
+
     }
 
     public static String FazerLogin(){
         JPasswordField passwordField = new JPasswordField();
 
-        String emailLogin = JOptionPane.showInputDialog(null, "Digite seu endereço de e-mail:", "E-mail", JOptionPane.PLAIN_MESSAGE);
+        JPanel formularioPanel = new JPanel();
+        JTextField emailField = new JTextField(10);
+        JPasswordField senhaField = new JPasswordField(10);
+        formularioPanel.setLayout(new BoxLayout(formularioPanel, BoxLayout.Y_AXIS)); //Deixa um abaixo do outro
 
-        int senhaLog = JOptionPane.showConfirmDialog(null, passwordField, "Digite sua senha:", JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
-        char[] senhaCharArray = passwordField.getPassword();
-        String senhaLogin = new String(senhaCharArray);
+        formularioPanel.add(new JLabel("Email:"));
+        formularioPanel.add(emailField);
 
-        return emailLogin + "#" + senhaLogin;
+        formularioPanel.add(new JLabel("Senha:"));
+        formularioPanel.add(senhaField);
+
+        int result = JOptionPane.showOptionDialog(null, formularioPanel, "TELA DE CADASTRO",
+                JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE, null, null, null);
+
+        if (result == JOptionPane.OK_OPTION) {
+            String emailLogin = emailField.getText();
+            char[] password = senhaField.getPassword();
+            String senhaLogin = new String(password.clone());
+            return emailLogin + "#" + senhaLogin;
+
+        } else {
+            JOptionPane.showMessageDialog(null, "Cadastro cancelado.", "Formulário De Cadastro", JOptionPane.WARNING_MESSAGE);
+        }
+        return null;
+
+//        String emailLogin = JOptionPane.showInputDialog(null, "Digite seu endereço de e-mail:", "E-mail", JOptionPane.PLAIN_MESSAGE);
+//
+//        int senhaLog = JOptionPane.showConfirmDialog(null, passwordField, "Digite sua senha:", JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
+//        char[] senhaCharArray = passwordField.getPassword();
+//        String senhaLogin = new String(senhaCharArray);
+//
+//        return emailLogin + "#" + senhaLogin;
 
     }
 

@@ -35,7 +35,7 @@ public class Manager {
 
         //Nenhum de seu atributos podem ser strings vazias
         if(usuario.getNome().equals("") || usuario.getEmail().equals("")|| usuario.getSenha().equals(""))
-            throw new RuntimeException("addUsusrio: Usuario não pode ter seu atributos string vazia!");
+            throw new RuntimeException("addUsuario: Usuario não pode ter seu atributos string vazia!");
 
         //talvez não permitir adicionar usuários de mesmo nome para evitar bugs
         if(usuarios.containsKey(usuario.getNome()))
@@ -157,7 +157,8 @@ public class Manager {
         String nomeU, email, senha;
         String nomeC, genero, nomePai, nomeMae;
         String doencas, medicacoes, denticoes, consultas, alergias, outros;
-        int idade, numCriancas, dataNascimento, rg, cpf;
+        int idade, numCriancas;
+        Double dataNascimento, rg, cpf;
 
 
         try {
@@ -182,10 +183,10 @@ public class Manager {
                 for(int i = 0; i < numCriancas; i++){
                     nomeC = splitted[cont++];
                     idade = Integer.parseInt(splitted[cont++]);
-                    dataNascimento = Integer.parseInt(splitted[cont++]);
+                    dataNascimento = Double.parseDouble(splitted[cont++]);
                     genero = splitted[cont++];
-                    rg = Integer.parseInt(splitted[cont++]);
-                    cpf = Integer.parseInt(splitted[cont++]);
+                    rg = Double.parseDouble(splitted[cont++]);
+                    cpf = Double.parseDouble(splitted[cont++]);
                     nomeMae = splitted[cont++];
                     nomePai = splitted[cont++];
 
@@ -248,7 +249,8 @@ public class Manager {
 
             //atributos de criança
             String nomeC, genero, nomeDoPai, nomeDaMae;
-            int idade, dataNascimento, rg, cpf;
+            int idade;
+            Double dataNascimento, rg, cpf;
 
             //atributos de histórico
             Historico historico;

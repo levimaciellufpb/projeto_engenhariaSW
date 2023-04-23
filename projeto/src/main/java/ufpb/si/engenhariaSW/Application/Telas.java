@@ -8,6 +8,7 @@ import ufpb.si.engenhariaSW.Model.Usuario;
 import javax.swing.*;
 
 public class Telas {
+
     protected static Manager manager = new Manager();
     private int escolha;
 
@@ -58,7 +59,11 @@ public class Telas {
 
     }
 
-    public static void SegundaTela() {
+    public static void SegundaTela(){
+        CadastrarCria.Cadastrar();
+    }
+
+    public static void TerceiraTela() {
 
 
         Object[] opcoes1 = {"Lista do Histórico", "Cadastar novo arquivo", "Voltar"};
