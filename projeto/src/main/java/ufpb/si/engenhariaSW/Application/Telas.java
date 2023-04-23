@@ -159,7 +159,7 @@ public class Telas {
 //
 //                Historico his = manager.getHistoricoDaCrianca(usuarioAtual.getCriancas(criancaAtual)); // falta resolver isso
 
-                Historico his = new Historico();
+                Historico his = manager.getHistoricoDaCrianca(usuarioAtual, criancaAtual);
 
                 if (opcaoSelecionadaCadastro1 == 0) {
                     JOptionPane.showMessageDialog(null, "Doenças: " + his.getDoencas());
