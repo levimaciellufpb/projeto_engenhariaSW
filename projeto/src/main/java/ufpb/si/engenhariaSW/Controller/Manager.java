@@ -325,6 +325,16 @@ public class Manager {
     }
 
 
+    public Usuario getUsuarioEmail(String email){
+        for(Usuario u: usuarios.values()){
+            if(u.getEmail().equalsIgnoreCase(email)){
+                return u;
+            }
+        }
+        return null;
+    }
+
+
     private boolean criancaExiste(Usuario usuario, Crianca crianca){
         return usuarioExiste(usuario) && usuario.getCriancas().contains(crianca);
     }

@@ -10,6 +10,7 @@ import javax.swing.*;
 public class Telas {
 
     protected static Manager manager = new Manager();
+    private static Usuario usuarioAtual;
     private int escolha;
 
     public static void PrimeiraTela()  {
@@ -23,16 +24,28 @@ public class Telas {
             if (opcaoSelecionada == 0) {
 
                 String loginInfo = LoginECadastro.FazerLogin();
-                String [] loginSplit = loginInfo.split("#");
 
-                //Se a senha for válida:
-                if(manager.validarUsuario(loginSplit[0], loginSplit[1])){
-                    JOptionPane.showMessageDialog(null,"Login feito com sucesso!");
-                    Telas.SegundaTela();
+                if(loginInfo == null){
+                    JOptionPane.showMessageDialog(null, "Cadastro cancelado.", "Formulário De Cadastro", JOptionPane.WARNING_MESSAGE);
                 }
-                //Senha inválida
                 else{
-                    JOptionPane.showMessageDialog(null, "Email ou senha estão incorretos!");
+                    String [] loginSplit = loginInfo.split("#");
+
+                    //Se a senha for válida:
+                    if(manager.validarUsuario(loginSplit[0], loginSplit[1])){
+
+                        usuarioAtual = manager.getUsuarioEmail(loginSplit[0]);
+
+                        if(usuarioAtual == null)
+                            throw new RuntimeException("Bug: ao fazer login e pegar um usuário pelo email, o usuario foi null!");
+
+                        JOptionPane.showMessageDialog(null,"Login feito com sucesso!");
+                        Telas.SegundaTela();
+                    }
+                    //Senha inválida
+                    else{
+                        JOptionPane.showMessageDialog(null, "Email ou senha estão incorretos!");
+                    }
                 }
             }
 
