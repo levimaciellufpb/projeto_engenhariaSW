@@ -113,25 +113,17 @@ public class Telas {
                 int criancaSelecionada = JOptionPane.showOptionDialog(null, "Escolha uma criança","Histórico de saúde",
                         JOptionPane.DEFAULT_OPTION,JOptionPane.PLAIN_MESSAGE,null, nomes, null);
 
-                if(criancaSelecionada == JOptionPane.OK_OPTION){
+                String nomeEscolhido = (String) nomes[criancaSelecionada];
 
-                    String nomeEscolhido = (String) nomes[criancaSelecionada];
-
-                    for(Crianca nome: nomeCria ){
-                        //Se o nome bater, setar criança como criança atual
-                        if(nome.getNome().equalsIgnoreCase(nomeEscolhido)){
-                            criancaAtual = nome;
-//                            System.out.println(Arrays.toString(nomes));
-//                            System.out.println(criancaSelecionada);
-//                            System.out.println(criancaAtual.toString());
-                            Telas.TerceiraTela(); // aq é a criança atual
-                        }
+                for(Crianca nome: nomeCria ){
+                    //Se o nome bater, setar criança como criança atual
+                    if(nome.getNome().equalsIgnoreCase(nomeEscolhido)){
+                        criancaAtual = nome;
+                        System.out.println(Arrays.toString(nomes));
+                        System.out.println(criancaSelecionada);
+                        System.out.println(criancaAtual.toString());
+                        Telas.TerceiraTela(); // aq é a criança atual
                     }
-
-                    //Se acabar o for, é porque não tem crianca com tal nome! Então, lançar excessão
-                    //throw new RuntimeException("Um bug ocorreu, pois ao selecionar opção, uma criança deveria ter sido selecionada");
-
-
                 }
             }
 
