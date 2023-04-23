@@ -8,7 +8,6 @@ import ufpb.si.engenhariaSW.Model.Usuario;
 
 import java.io.*;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
@@ -115,46 +114,45 @@ public class Manager {
         return null;
     }
 
-    public Historico alterarHistoricoDaCrianca(Usuario usuario, Crianca crianca, String alteracao,
-                                               AlterarHistorico opcao){
+    public void alterarHistoricoDaCrianca(Usuario usuario, Crianca crianca, String alteracao,
+                                          AlterarHistorico opcao){
 
         //Algoritmo: pesquisar se existe usuário e criança, e pegar o histórico da criança
         //Dependendo de um enum, alterar o campo correto do histórico.
         //usuario deve existir e criança também, se não retornar null
 
         if(!usuarioExiste(usuario) && !criancaExiste(usuario, crianca))
-            return null;
+            throw new RuntimeException("alterarHistoricoDaCrianca: Usuário não existe ou criança não existe!");
 
-        Historico historicoEncontrado = usuario.getCrianca(crianca).getHistorico();
+        Historico historicoEncontrado = crianca.getHistorico();
 
         switch (opcao){
 
             case DOENCAS:
                 historicoEncontrado.setDoencas(alteracao);
-                return historicoEncontrado;
+                return;
 
             case MEDICACOES:
                 historicoEncontrado.setMedicacoes(alteracao);
-                return historicoEncontrado;
+                return;
 
             case CONSULTAS:
                 historicoEncontrado.setConsultas(alteracao);
-                return historicoEncontrado;
+                return;
 
             case ALERGIAS:
                 historicoEncontrado.setAlergias(alteracao);
-                return historicoEncontrado;
+                return;
 
             case DENTICOES:
                 historicoEncontrado.setDenticoes(alteracao);
-                return historicoEncontrado;
+                return;
 
             case OUTROS:
                 historicoEncontrado.setOutros(alteracao);
-                return historicoEncontrado;
+                return;
 
             default:
-                return null;
         }
     }
 

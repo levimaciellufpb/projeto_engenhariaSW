@@ -2,6 +2,7 @@ package ufpb.si.engenhariaSW.Application;
 
 import ufpb.si.engenhariaSW.Controller.Manager;
 import ufpb.si.engenhariaSW.Exceptions.UsuarioException;
+import ufpb.si.engenhariaSW.Model.AlterarHistorico;
 import ufpb.si.engenhariaSW.Model.Crianca;
 import ufpb.si.engenhariaSW.Model.Historico;
 import ufpb.si.engenhariaSW.Model.Usuario;
@@ -119,9 +120,6 @@ public class Telas {
                     //Se o nome bater, setar criança como criança atual
                     if(nome.getNome().equalsIgnoreCase(nomeEscolhido)){
                         criancaAtual = nome;
-                        System.out.println(Arrays.toString(nomes));
-                        System.out.println(criancaSelecionada);
-                        System.out.println(criancaAtual.toString());
                         Telas.TerceiraTela(); // aq é a criança atual
                     }
                 }
@@ -165,36 +163,94 @@ public class Telas {
                     JOptionPane.showMessageDialog(null, "Doenças: " + his.getDoencas());
                 }
                 else if (opcaoSelecionadaCadastro1 == 1) {
-                    JOptionPane.showMessageDialog(null, "Medicamentos: " + his.getDoencas());
+                    JOptionPane.showMessageDialog(null, "Medicamentos: " + his.getMedicacoes());
                 }
                 else if (opcaoSelecionadaCadastro1 == 2) {
-                    JOptionPane.showMessageDialog(null, "Dentições: " + his.getDoencas());
+                    JOptionPane.showMessageDialog(null, "Dentições: " + his.getDenticoes());
                 }
                 else if (opcaoSelecionadaCadastro1 == 3) {
-                    JOptionPane.showMessageDialog(null, "Consultas Médicas" + his.getDoencas());
+                    JOptionPane.showMessageDialog(null, "Consultas Médicas: " + his.getConsultas());
                 }
                 else if (opcaoSelecionadaCadastro1 == 4) {
-                    JOptionPane.showMessageDialog(null, "Alergias" + his.getDoencas());
+                    JOptionPane.showMessageDialog(null, "Alergias: " + his.getAlergias());
                 }
                 else if (opcaoSelecionadaCadastro1 == 5) {
-                    JOptionPane.showMessageDialog(null, "Outros" + his.getDoencas());
+                    JOptionPane.showMessageDialog(null, "Outros: " + his.getOutros());
                 }
 
             } else if (opcaoSelecionadaCadastro == 1){
+
                 int opcaoSelecionadaCadastro2 = JOptionPane.showOptionDialog(null, "Escolha uma opção", "Painel",
                         JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE, null, opcoes2, opcoes2[0]);
                 if (opcaoSelecionadaCadastro2 == 0) {
-                    cadastroDadosMedicos.cadastroDoenca();
-                } else if (opcaoSelecionadaCadastro2 == 1) {
-                    cadastroDadosMedicos.cadastroMedicamento();
-                } else if (opcaoSelecionadaCadastro2 == 2) {
-                    cadastroDadosMedicos.cadastroDenticao();
-                } else if (opcaoSelecionadaCadastro2 == 3) {
-                    cadastroDadosMedicos.cadastroConsultaMedica();
-                } else if (opcaoSelecionadaCadastro2 == 4) {
-                    cadastroDadosMedicos.cadastroAlergias();
-                } else if (opcaoSelecionadaCadastro2 == 5) {
-                    cadastroDadosMedicos.cadastroOutros();
+                    String doenca = cadastroDadosMedicos.cadastroDoenca();
+
+                    try{
+                        manager.alterarHistoricoDaCrianca(usuarioAtual, criancaAtual, doenca, AlterarHistorico.DOENCAS);
+                        JOptionPane.showMessageDialog(null, "Histórico de doenças alterado com sucesso!");
+                    }
+                    catch (RuntimeException r){
+                        JOptionPane.showMessageDialog(null, "Houve um erro inesperado. Por favor, contate os administradores do sistema");
+                    }
+                }
+
+                else if (opcaoSelecionadaCadastro2 == 1) {
+                    String medicamento = cadastroDadosMedicos.cadastroMedicamento();
+
+                    try{
+                        manager.alterarHistoricoDaCrianca(usuarioAtual, criancaAtual, medicamento, AlterarHistorico.MEDICACOES);
+                        JOptionPane.showMessageDialog(null, "Histórico de Medicamentos alterado com sucesso!");
+                    }
+                    catch (RuntimeException r){
+                        JOptionPane.showMessageDialog(null, "Houve um erro inesperado. Por favor, contate os administradores do sistema");
+                    }
+
+                }
+                else if (opcaoSelecionadaCadastro2 == 2) {
+                    String denticao = cadastroDadosMedicos.cadastroDenticao();
+
+                    try {
+                        manager.alterarHistoricoDaCrianca(usuarioAtual,criancaAtual,denticao,AlterarHistorico.DENTICOES);
+                        JOptionPane.showMessageDialog(null, "Histórico de dentições alterado com sucesso");
+                    }
+                    catch (RuntimeException r){
+                        JOptionPane.showMessageDialog(null, "Houve um erro inesperado. Por favor, contate os administradores do sistema");
+                    }
+                }
+                else if (opcaoSelecionadaCadastro2 == 3) {
+                    String consultas = cadastroDadosMedicos.cadastroConsultaMedica();
+
+                    try{
+                        manager.alterarHistoricoDaCrianca(usuarioAtual,criancaAtual,consultas,AlterarHistorico.CONSULTAS);
+                        JOptionPane.showMessageDialog(null, "Histórico de consultas alterado com sucesso");
+                    }
+                    catch (RuntimeException r){
+                        JOptionPane.showMessageDialog(null, "Houve um erro inesperado. Por favor, contate os administradores do sistema");
+                    }
+
+                }
+                else if (opcaoSelecionadaCadastro2 == 4) {
+                    String alergias = cadastroDadosMedicos.cadastroAlergias();
+
+                    try{
+                        manager.alterarHistoricoDaCrianca(usuarioAtual, criancaAtual, alergias, AlterarHistorico.ALERGIAS);
+                        JOptionPane.showMessageDialog(null, "Histórico de alergias alterado com sucesso");
+                    }
+                    catch (RuntimeException r){
+                        JOptionPane.showMessageDialog(null, "Houve um erro inesperado. Por favor, contate os administradores do sistema");
+                    }
+                }
+                else if (opcaoSelecionadaCadastro2 == 5) {
+
+                    String outros = cadastroDadosMedicos.cadastroOutros();
+
+                    try{
+                        manager.alterarHistoricoDaCrianca(usuarioAtual, criancaAtual, outros, AlterarHistorico.OUTROS);
+                        JOptionPane.showMessageDialog(null, "Histórico de outras informações alterado com sucesso");
+                    }
+                    catch (RuntimeException r){
+                        JOptionPane.showMessageDialog(null, "Houve um erro inesperado. Por favor, contate os administradores do sistema");
+                    }
                 }
 
             } else {
