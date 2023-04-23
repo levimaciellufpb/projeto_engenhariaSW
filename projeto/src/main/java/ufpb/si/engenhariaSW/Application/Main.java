@@ -7,8 +7,10 @@ public class Main {
     public static void main(String[] args) {
 
 
-        CadastrarCria.Cadastrar();
-        //Telas.PrimeiraTela();
+//        LoginECadastro.FazerLogin();
+//
+//        CadastrarCria.Cadastrar();
+        Telas.PrimeiraTela();
 
     }
 

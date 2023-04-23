@@ -54,6 +54,12 @@ public class Manager {
          return usuarios.remove(nomeUsuario);
     }
 
+
+
+
+
+
+
     //Metodo tem retorno, pois esta pode ser add ou não
     public Crianca addCrianca(Usuario usuario, Crianca crianca){
         //Nem criança, nem Usuario devem ser null!

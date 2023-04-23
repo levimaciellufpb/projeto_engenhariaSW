@@ -2,6 +2,7 @@ package ufpb.si.engenhariaSW.Application;
 
 import ufpb.si.engenhariaSW.Controller.Manager;
 import ufpb.si.engenhariaSW.Exceptions.UsuarioException;
+import ufpb.si.engenhariaSW.Model.Crianca;
 import ufpb.si.engenhariaSW.Model.Historico;
 import ufpb.si.engenhariaSW.Model.Usuario;
 
@@ -73,7 +74,33 @@ public class Telas {
     }
 
     public static void SegundaTela(){
-        CadastrarCria.Cadastrar();
+
+        manager.carregarDados();
+
+        Object[] opcoes = {"Novo", "Listar", "Voltar"};
+
+        boolean sair = false;
+
+        while (!sair) {
+            int opcaoSelecionada = JOptionPane.showOptionDialog(null, "Escolha uma opção", "Histórico de saúde", JOptionPane.DEFAULT_OPTION,
+                    JOptionPane.PLAIN_MESSAGE, null, opcoes, opcoes[0]);
+
+            if (opcaoSelecionada == 0) {
+                Crianca crianca = CadastrarCria.Cadastrar();
+                manager.addCrianca(usuarioAtual, crianca );
+            }
+
+            else if (opcaoSelecionada == 1) {
+                //listarCriança
+            }
+
+            else if (opcaoSelecionada == 2) {
+                JOptionPane.showMessageDialog(null, "Até mais!");
+                manager.escreverDados();
+                sair = true;
+            }
+        }
+
     }
 
     public static void TerceiraTela() {

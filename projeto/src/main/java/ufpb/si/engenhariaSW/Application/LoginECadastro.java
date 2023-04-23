@@ -39,13 +39,7 @@ public class LoginECadastro extends Telas{
         Usuario u = new Usuario(nomeCad,emailCad,senhaCad);
 
         if (result == JOptionPane.OK_OPTION) {
-//            String nomeCad = nomeField.getText();
-//            String emailCad = emailField.getText();
-//            char[] password = senhaField.getPassword();
-//            String senhaCad = new String(password.clone());
             JOptionPane.showMessageDialog(null,"Cadastrou");
-//            return new Usuario(nomeCad,emailCad,senhaCad);
-
         } else {
             JOptionPane.showMessageDialog(null, "Cadastro cancelado.", "Formulário De Cadastro", JOptionPane.WARNING_MESSAGE);
         }
@@ -67,7 +61,7 @@ public class LoginECadastro extends Telas{
         formularioPanel.add(new JLabel("Senha:"));
         formularioPanel.add(senhaField);
 
-        int result = JOptionPane.showOptionDialog(null, formularioPanel, "TELA DE CADASTRO",
+        int result = JOptionPane.showOptionDialog(null, formularioPanel, "TELA DE LOGIN",
                 JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE, null, null, null);
 
         if (result == JOptionPane.OK_OPTION) {
@@ -76,11 +70,13 @@ public class LoginECadastro extends Telas{
             String senhaLogin = new String(password.clone());
             return emailLogin + "#" + senhaLogin;
 
+
+        } else {
+            JOptionPane.showMessageDialog(null, "Cadastro cancelado.", "Formulário De Cadastro", JOptionPane.WARNING_MESSAGE);
+
         }
         //Retornar null caso o cadastro seja cancelado
-        else {
-            return null;
-        }
+        return null;
 
 
 //        String emailLogin = JOptionPane.showInputDialog(null, "Digite seu endereço de e-mail:", "E-mail", JOptionPane.PLAIN_MESSAGE);
