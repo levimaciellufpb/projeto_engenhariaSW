@@ -70,11 +70,11 @@ public class LoginECadastro extends Telas{
 
 
         } else {
-            JOptionPane.showMessageDialog(null, "Cadastro cancelado.", "Formulário De Cadastro", JOptionPane.WARNING_MESSAGE);
-
+            //Retornar null caso o cadastro seja cancelado
+            return null;
         }
-        //Retornar null caso o cadastro seja cancelado
-        return null;
+
+
 
 
 //        String emailLogin = JOptionPane.showInputDialog(null, "Digite seu endereço de e-mail:", "E-mail", JOptionPane.PLAIN_MESSAGE);

@@ -70,7 +70,7 @@ public class Telas {
                     catch (UsuarioException u){
                         JOptionPane.showMessageDialog(null, "Não foi possível adicionar usuário, pois já existe um usuário com mesmo nome");
                     }
-                    
+
                 }
                 catch (RuntimeException r){
                     JOptionPane.showMessageDialog(null, "Cadastro cancelado.", "Formulário De Cadastro", JOptionPane.WARNING_MESSAGE);
