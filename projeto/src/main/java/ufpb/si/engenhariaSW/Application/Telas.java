@@ -101,8 +101,17 @@ public class Telas {
                     JOptionPane.PLAIN_MESSAGE, null, opcoes, opcoes[0]);
 
             if (opcaoSelecionada == 0) {
-                Crianca crianca = CadastrarCria.Cadastrar();
-                manager.addCrianca(usuarioAtual, crianca );
+                try{
+                    Crianca crianca = CadastrarCria.Cadastrar();
+                    manager.addCrianca(usuarioAtual, crianca );
+                }
+                catch (NumberFormatException n){
+                    JOptionPane.showMessageDialog(null, "Campos: idade, data de nascimento, rg e cpf devem ser exclusivamente numéricos!");
+                }
+                catch (RuntimeException r){
+                    JOptionPane.showMessageDialog(null, r.getMessage());
+                }
+
             }
 
             else if (opcaoSelecionada == 1) {
@@ -121,13 +130,15 @@ public class Telas {
                 int criancaSelecionada = JOptionPane.showOptionDialog(null, "Escolha uma criança","Histórico de saúde",
                         JOptionPane.DEFAULT_OPTION,JOptionPane.PLAIN_MESSAGE,null, nomes, null);
 
-                String nomeEscolhido = (String) nomes[criancaSelecionada];
+                if(criancaSelecionada != -1){
+                    String nomeEscolhido = (String) nomes[criancaSelecionada];
 
-                for(Crianca nome: nomeCria ){
-                    //Se o nome bater, setar criança como criança atual
-                    if(nome.getNome().equalsIgnoreCase(nomeEscolhido)){
-                        criancaAtual = nome;
-                        Telas.TerceiraTela(); // aq é a criança atual
+                    for(Crianca nome: nomeCria ){
+                        //Se o nome bater, setar criança como criança atual
+                        if(nome.getNome().equalsIgnoreCase(nomeEscolhido)){
+                            criancaAtual = nome;
+                            Telas.TerceiraTela(); // aq é a criança atual
+                        }
                     }
                 }
             }

@@ -53,14 +53,42 @@ public class CadastrarCria {
         int result = JOptionPane.showOptionDialog(null, formularioPanel, "Formulário De Cadastro de criança",
                 JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE, null, null, null);
 
+        if(result == 2 || result == -1){
+            System.out.println(result);
+            throw new RuntimeException("Cadastro de criança cancelado");
+        }
+        if (nomeField.getText().equals(""))
+            throw new RuntimeException("Campo nome não pode ser vazio!");
         String nome = nomeField.getText();
+
+        if(idadeField.getText().equals(""))
+            throw new RuntimeException("Campo idade não pode ser vazio!");
         int idade = Integer.parseInt(idadeField.getText());
+
+        if(dataDeNascimentoField.getText().equals(""))
+            throw new RuntimeException("Campo data de nascimento não pode ser vazio!");
         Double dataDeNascimento = Double.parseDouble(idadeField.getText());
+
+        if(generoField.getText().equals(""))
+            throw new RuntimeException("Campo gênero não pode ser vazio!");
         String genero = generoField.getText();
+
+        if (rgField.getText().equals(""))
+            throw new RuntimeException("Campo rg não pode ser vazio!");
         Double rg = Double.parseDouble(rgField.getText());
+
+        if(cpfField.getText().equals(""))
+            throw new RuntimeException("Campo cpf não pode ser vazio!");
         Double cpf = Double.parseDouble(cpfField.getText());
+
+        if(nomeDaMaeField.getText().equals(""))
+            throw new RuntimeException("Campo nome da mãe não pode ser vazio");
         String nomeDaMae = nomeDaMaeField.getText();
+
+        if(nomeDoPaiField.getText().equals(""))
+            throw new RuntimeException("Campo nome do pai não pode ser vazio");
         String nomeDoPai = nomeDoPaiField.getText();
+
         Crianca novaCria = new Crianca(nome, idade, dataDeNascimento, genero, rg, cpf, nomeDaMae, nomeDoPai);
 
         if (result == JOptionPane.OK_OPTION) {
